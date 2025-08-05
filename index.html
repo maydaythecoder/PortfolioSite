@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhyadin Mohamed - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Source Code Pro', monospace;
+        }
+        .text-headline { color: #2C3831; }
+        .text-body { color: #2C3831; }
+        .text-captions { color: #545454; }
+        .bg-background-white { background-color: #FFFBFB; }
+        .tracking-tight-responsive { letter-spacing: -0.03em; }
+        .group .group-hover\:opacity-100 {
+            opacity: 0;
+            transition: opacity 300ms ease-in-out;
+        }
+        .group:hover .group-hover\:opacity-100 {
+            opacity: 1;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+</head>
+<body class="bg-background-white text-body">
+    <a href="#" id="back-to-top" class="fixed bottom-6 left-6 z-50 p-3 bg-white bg-opacity-30 backdrop-blur-xl border border-white border-opacity-20 rounded-full shadow-lg text-headline cursor-pointer hidden" title="Back to top">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 11l7-7 7 7"></path></svg>
+    </a>
+    <div class="relative w-full">
+        <!-- Background -->
+        <div class="fixed inset-0 bg-black bg-opacity-30 blurred-background bg-center bg-cover -z-10">
+            <div class="absolute inset-0 backdrop-blur-[125px]"></div>
+        </div>
+        <!-- Floating Navbar -->
+        <nav class="fixed top-0 left-1/2 -translate-x-1/2 z-50 bg-white bg-opacity-10 backdrop-blur-md rounded-2xl shadow-lg px-4 sm:px-8 py-3 mt-4 w-11/12 md:w-auto">
+            <div class="flex flex-wrap justify-center items-center gap-x-4 gap-y-1 md:gap-x-8 text-[13px] text-headline tracking-tight-responsive">
+                <a href="#about" class="hover:underline transition duration-300 ease-in-out">About</a>
+                <a href="#skills" class="hover:underline transition duration-300 ease-in-out">Skills</a>
+                <a href="#experience" class="hover:underline transition duration-300 ease-in-out">Experience</a>
+                <a href="#projects" class="hover:underline transition duration-300 ease-in-out">Projects</a>
+                <a href="#contact" class="hover:underline transition duration-300 ease-in-out">Contact</a>
+            </div>
+        </nav>
+
+        <div class="relative bg-transparent mt-32 md:mt-[225px] rounded-tl-[50px] md:rounded-tl-[100px] rounded-tr-[20px] max-w-[1600px] mx-auto main-content-backdrop">
+
+            <!-- Header -->
+            <header class="relative px-6 md:px-[70px] pt-8 md:pt-[30px] pb-16 md:pb-[120px] max-w-[1500px] mx-auto">
+                <h1 class="text-3xl md:text-4xl font-bold tracking-tight-responsive">MUHYADIN MOHAMED</h1>
+            </header>
+
+            <main class="w-full">
+                <!-- Hero Section -->
+                <section id="about" class="px-6 md:px-[100px] pt-[35px] pb-[50px] max-w-[1500px] mx-auto">
+                    <div class="flex flex-col gap-[50px]">
+                        <div class="flex flex-col gap-5 text-headline">
+                            <h2 class="text-xl md:text-2xl font-bold">React | React Native | Typescript | Javascript | Node.js | Python Developer</h2>
+                        </div>
+                        <div class="flex flex-col gap-5 text-headline max-w-[600px]">
+                            <h2 class="text-xs uppercase tracking-tight-responsive">About Me</h2>
+                            <div class="text-[13px] leading-snug tracking-tight-responsive space-y-4">
+                                <p>Full-stack developer with 4+ years of experience designing and building scalable, high-performance web and mobile applications.</p>
+                                <p>Proficient in front-end technologies like React, React Native, as well as back-end technologies like Node.js, Python, and PHP. Experienced in DevOps, CI/CD, and Cloud infrastructure, especially with AWS and Azure also GCP.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Skills Section -->
+                <section id="skills" class="px-6 md:px-[100px] pt-[50px] max-w-[1500px] mx-auto border-t border-gray-300">
+                     <h2 class="text-xs uppercase tracking-tight-responsive text-headline mb-10">Skills</h2>
+                     <div class="flex flex-wrap justify-start gap-4">
+                        <span class="bg-gray-200 text-gray-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded">React</span>
+                        <span class="bg-gray-200 text-gray-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded">React Native</span>
+                        <span class="bg-gray-200 text-gray-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded">TypeScript</span>
+                        <span class="bg-gray-200 text-gray-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded">JavaScript</span>
+                        <span class="bg-gray-200 text-gray-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded">Python</span>
+                        <span class="bg-gray-200 text-gray-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded">Node.js</span>
+                        <span class="bg-gray-200 text-gray-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded">Django</span>
+                        <span class="bg-gray-200 text-gray-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded">PHP</span>
+                        <span class="bg-gray-200 text-gray-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded">AWS</span>
+                        <span class="bg-gray-200 text-gray-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded">Azure</span>
+                        <span class="bg-gray-200 text-gray-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded">GCP</span>
+                        <span class="bg-gray-200 text-gray-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded">HTML5</span>
+                        <span class="bg-gray-200 text-gray-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded">CSS3</span>
+                        <span class="bg-gray-200 text-gray-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded">Tailwind</span>
+                        <span class="bg-gray-200 text-gray-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded">MongoDB</span>
+                        <span class="bg-gray-200 text-gray-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded">MySQL</span>
+                        <span class="bg-gray-200 text-gray-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded">Git</span>
+                    </div>
+                </section>
+                
+                <!-- Experience Section -->
+                <section id="experience" class="px-6 md:px-[100px] py-[30px] max-w-[1500px] mx-auto border-t border-gray-300 mt-10">
+                    <h2 class="text-xs uppercase tracking-tight-responsive text-headline mb-10">Work Experience</h2>
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-lg font-bold">FULL-STACK DEVELOPER | Stealth Project</h3>
+                            <p class="text-sm text-gray-500">September 2023 – Present</p>
+                            <ul class="list-disc list-inside mt-2 space-y-1 text-sm">
+                                <li>Designed and deployed scalable web applications on Google Cloud Platform (GCP) using Cloud Storage, Cloud Functions, and Firestore.</li>
+                                <li>Automated deployments using AWS/GCP, Terraform, and GitHub Actions CI/CD pipelines.</li>
+                                <li>Built RESTful APIs with Django, enabling seamless integration with front-end systems.</li>
+                                <li>Collaborated with cross-functional teams to ensure system reliability, high availability, and performance.</li>
+                                <li>Built scalable web applications using React.js, Next.js, and TypeScript for frontend and Django for backend APIs.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">Airport Security Officer | John Glenn International</h3>
+                            <p class="text-sm text-gray-500">November 2022–Present</p>
+                            <ul class="list-disc list-inside mt-2 space-y-1 text-sm">
+                                <li>Patrolled the airfield to ensure security compliance, monitor restricted areas, and respond safety concerns.</li>
+                                <li>Assisted customers with directions and information while maintaining a strong focus on customer service.</li>
+                                <li>Enforced federal regulations by verifying credentials, monitoring secure zones, and ensuring all procedures adhered to TSA and airport security protocols.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">ASSOCIATE CONSULTANT FULL-STACK DEVELOPER | Tech Talent & Strategy</h3>
+                            <p class="text-sm text-gray-500">July 2022 – November 2022</p>
+                            <ul class="list-disc list-inside mt-2 space-y-1 text-sm">
+                                <li>Developed full-stack applications with Java, Spring, and SQL, emphasizing secure API development and efficient database access.</li>
+                                <li>Worked within an an Agile environment to meet sprint goals and improve code quality.</li>
+                                <li>Gained foundational experience with cloud infrastructure and deployment automation.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">FRONTEND DEVELOPER | Democracy Lab / Cube Seed</h3>
+                            <p class="text-sm text-gray-500">March 2020 – June 2022</p>
+                            <ul class="list-disc list-inside mt-2 space-y-1 text-sm">
+                                <li>Created performant and accessible React.js applications with a focus on user experience.</li>
+                                <li>Partnered with back-end teams to integrate APIs and optimize data flow.</li>
+                                <li>Applied security best practices and maintained front-end consistency across deployments.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="education" class="px-6 md:px-[100px] py-[30px] max-w-[1500px] mx-auto border-t border-gray-300 mt-10">
+                    <h2 class="text-xs uppercase tracking-tight-responsive text-headline mb-10">Education & Certifications</h2>
+                     <div class="space-y-4">
+                        <div>
+                            <h3 class="text-lg font-bold">Meta Elevate: Full-Stack Development, Coursera</h3>
+                            <p class="text-sm text-gray-500">December 2022 – February 2024</p>
+                             <p class="mt-2 text-sm">Backend development, API design, CI/CD, database management, Agile practices.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">Certifications</h3>
+                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
+                                 <div class="bg-gray-100 p-4 rounded-lg">
+                                    <p class="font-semibold">Meta</p>
+                                     <p class="text-sm">React, JavaScript, Python, Front-end, Back-end</p>
+                                </div>
+                                 <div class="bg-gray-100 p-4 rounded-lg">
+                                     <p class="font-semibold">LinkedIn</p>
+                                     <p class="text-sm">AWS</p>
+                                </div>
+                                 <div class="bg-gray-100 p-4 rounded-lg">
+                                     <p class="font-semibold">Google</p>
+                                     <p class="text-sm">Cybersecurity, AI/ML</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Projects Section -->
+                <section id="projects" class="px-6 md:px-[100px] py-10 max-w-[1500px] mx-auto border-t border-gray-300 mt-10">
+                    <h2 class="text-xs uppercase tracking-tight-responsive text-headline mb-10">Projects</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+                        <a href="https://pintrest-3f6d3.firebaseapp.com/" target="_blank" rel="noopener" class="group flex flex-col items-center gap-4 text-center">
+                            <div class="w-full aspect-square bg-cover bg-center project-bg-pinterest" aria-label="Project Pinterest Clone"></div>
+                            <p class="text-[13px] text-headline tracking-tight-responsive">Pinterest Clone <span class="group-hover:opacity-100 opacity-0 transition-opacity duration-300">↗</span></p>
+                        </a>
+                        <a href="https://github.com/maydaythecoder/Ai-Racing" target="_blank" rel="noopener" class="group flex flex-col items-center gap-4 text-center">
+                            <div class="w-full aspect-square bg-cover bg-center project-bg-ai-racing" aria-label="Project Ai-Racing"></div>
+                            <p class="text-[13px] text-headline tracking-tight-responsive">AI Racing Game <span class="group-hover:opacity-100 opacity-0 transition-opacity duration-300">↗</span></p>
+                        </a>
+                        <a href="https://github.com/maydaythecoder/SelfDrivingCar" target="_blank" rel="noopener" class="group flex flex-col items-center gap-4 text-center">
+                            <div class="w-full aspect-square bg-cover bg-center project-bg-self-driving" aria-label="Project SelfDrivingCar"></div>
+                            <p class="text-[13px] text-headline tracking-tight-responsive">Self Driving Car Sim <span class="group-hover:opacity-100 opacity-0 transition-opacity duration-300">↗</span></p>
+                        </a>
+                    </div>
+                </section>
+
+            </main>
+
+            <!-- Footer -->
+            <footer id="contact" class="px-6 md:px-[100px] pt-[100px] pb-[80px] max-w-[1500px] mx-auto">
+                <div class="pt-[80px] border-t border-gray-300 flex flex-row items-stretch justify-between gap-x-20 gap-y-10">
+                    <!-- Contact Info -->
+                    <div class="flex flex-col gap-5 min-w-[260px]">
+                        <h2 class="text-xs uppercase tracking-tight-responsive text-headline">Get In Touch</h2>
+                        <div class="flex items-center gap-2">
+                            <a 
+                                href="mailto:Muhyadin.Mohamed.003@gmail.com" 
+                                class="hover:underline text-captions text-[11px] leading-relaxed"
+                                onclick="window.location.href='mailto:Muhyadin.Mohamed.003@gmail.com'; return false;"
+                            >
+                                Muhyadin.Mohamed.003@gmail.com
+                            </a>
+                            <button 
+                                type="button" 
+                                class="ml-1 p-1 rounded hover:bg-gray-200 transition"
+                                aria-label="Copy email"
+                                onclick="navigator.clipboard.writeText('Muhyadin.Mohamed.003@gmail.com'); 
+                                    const btn = this; 
+                                    btn.classList.add('text-green-600'); 
+                                    btn.querySelector('svg').classList.replace('text-captions','text-green-600');
+                                    setTimeout(() => { 
+                                        btn.classList.remove('text-green-600'); 
+                                        btn.querySelector('svg').classList.replace('text-green-600','text-captions');
+                                    }, 1200);"
+                            >
+                                <!-- Clipboard Icon (Heroicons outline) -->
+                                <svg class="w-4 h-4 text-captions transition-colors duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none"/>
+                                    <rect x="3" y="3" width="13" height="13" rx="2" ry="2" stroke="currentColor" fill="none"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Social Links Bottom Right -->
+                    <div class="flex flex-col justify-end items-end flex-1">
+                        <div class="flex space-x-4 mt-auto">
+                            <a href="https://github.com/maydaythecoder" target="_blank" rel="noopener" class="text-captions hover:text-headline transition-colors duration-200">GitHub</a>
+                            <a href="https://www.linkedin.com/in/muhyadin-mohamed-567a72255/" target="_blank" rel="noopener" class="text-captions hover:text-headline transition-colors duration-200">LinkedIn</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script>
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Header animation on load
+            gsap.from("header h1", { duration: 1, y: 30, opacity: 0, ease: "power4.out", delay: 0.2 });
+            gsap.from("#about h2", { duration: 1, y: 30, opacity: 0, ease: "power4.out", delay: 0.4 });
+
+            // Smooth scrolling for navigation
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = this.getAttribute('href');
+                    gsap.to(window, {
+                        duration: 1, 
+                        scrollTo: {
+                            y: target,
+                            offsetY: 80
+                        }
+                    });
+                });
+            });
+
+            // Scroll-triggered animations for sections
+            gsap.utils.toArray('section').forEach((section, i) => {
+                gsap.from(section, {
+                    opacity: 0,
+                    y: 50,
+                    duration: 1,
+                    scrollTrigger: {
+                        trigger: section,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none'
+                    }
+                });
+            });
+
+            // Hover animation for skill tags
+            const skillTags = document.querySelectorAll('#skills span');
+            skillTags.forEach(tag => {
+                tag.style.transition = 'transform 0.3s ease';
+                tag.addEventListener('mouseenter', () => gsap.to(tag, { scale: 1.1, duration: 0.3 }));
+                tag.addEventListener('mouseleave', () => gsap.to(tag, { scale: 1, duration: 0.3 }));
+            });
+
+            // Back to top button animation
+            const backToTop = document.querySelector('#back-to-top');
+
+            gsap.to(backToTop, {
+                scrollTrigger: {
+                    trigger: "body",
+                    start: "top -15%",
+                    onEnter: () => backToTop.classList.remove('hidden'),
+                    onLeaveBack: () => backToTop.classList.add('hidden')
+                }
+            });
+
+            backToTop.addEventListener('click', (e) => {
+                e.preventDefault();
+                gsap.to(window, {
+                    duration: 1,
+                    scrollTo: 0,
+                    ease: "power2.inOut"
+                });
+            });
+
+            // Hover animation for project cards
+            const projectCards = document.querySelectorAll('#projects a');
+            projectCards.forEach(card => {
+                card.style.transition = 'transform 0.3s ease';
+                const image = card.querySelector('div');
+                gsap.set(image, { scale: 1.0 });
+                card.addEventListener('mouseenter', () => {
+                    gsap.to(card, { y: -8, duration: 0.3 });
+                    gsap.to(image, { scale: 1.05, duration: 0.3 });
+                });
+                card.addEventListener('mouseleave', () => {
+                    gsap.to(card, { y: 0, duration: 0.3 });
+                    gsap.to(image, { scale: 1.0, duration: 0.3 });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
