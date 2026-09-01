@@ -34,7 +34,7 @@ const I18N = {
         back_top: 'back to top',
         copy_idle: 'copy address', copied: 'copied', copy_failed: 'copy failed',
         theme_dark: 'dark', theme_light: 'light',
-        aria_sections: 'Sections', aria_lang: 'Language',
+        aria_sections: 'Sections', aria_menu: 'Site menu', aria_lang: 'Language',
         meta_desc: 'Full-stack developer building web and mobile applications with React, TypeScript, Node.js, and Python.',
         year_2026: '2026',
         year_2023: '2023',
@@ -73,7 +73,7 @@ const I18N = {
         back_top: 'volver arriba',
         copy_idle: 'copiar dirección', copied: 'copiado', copy_failed: 'error al copiar',
         theme_dark: 'oscuro', theme_light: 'claro',
-        aria_sections: 'Secciones', aria_lang: 'Idioma',
+        aria_sections: 'Secciones', aria_menu: 'Menú del sitio', aria_lang: 'Idioma',
         meta_desc: 'Desarrollador full-stack que crea aplicaciones web y móviles con React, TypeScript, Node.js y Python.'
     },
     fr: {
@@ -109,7 +109,7 @@ const I18N = {
         back_top: 'haut de page',
         copy_idle: "copier l'adresse", copied: 'copié', copy_failed: 'échec de la copie',
         theme_dark: 'sombre', theme_light: 'clair',
-        aria_sections: 'Sections', aria_lang: 'Langue',
+        aria_sections: 'Sections', aria_menu: 'Menu du site', aria_lang: 'Langue',
         meta_desc: 'Développeur full-stack : applications web et mobiles avec React, TypeScript, Node.js et Python.'
     },
     ar: {
@@ -151,7 +151,7 @@ const I18N = {
         back_top: 'العودة إلى الأعلى',
         copy_idle: 'نسخ العنوان', copied: 'تم النسخ', copy_failed: 'تعذّر النسخ',
         theme_dark: 'داكن', theme_light: 'فاتح',
-        aria_sections: 'الأقسام', aria_lang: 'اللغة',
+        aria_sections: 'الأقسام', aria_menu: 'قائمة الموقع', aria_lang: 'اللغة',
         meta_desc: 'مطوّر برمجيات متكامل يبني تطبيقات ويب وجوال باستخدام رياكت وتايب سكريبت ونود جي إس وبايثون.',
         year_2026: '٢٠٢٦',
         year_2023: '٢٠٢٣',
@@ -196,7 +196,7 @@ const I18N = {
         back_top: '回到顶部',
         copy_idle: '复制地址', copied: '已复制', copy_failed: '复制失败',
         theme_dark: '深色', theme_light: '浅色',
-        aria_sections: '栏目', aria_lang: '语言',
+        aria_sections: '栏目', aria_menu: '网站菜单', aria_lang: '语言',
         meta_desc: '全栈开发工程师,使用瑞艾克特、泰普斯克利普特、诺德杰艾斯和派森构建网页与移动应用。',
         year_2026: '2026',
         year_2023: '2023',
@@ -241,7 +241,7 @@ const I18N = {
         back_top: 'ऊपर जाएँ',
         copy_idle: 'पता कॉपी करें', copied: 'कॉपी हो गया', copy_failed: 'कॉपी नहीं हो सका',
         theme_dark: 'डार्क', theme_light: 'लाइट',
-        aria_sections: 'अनुभाग', aria_lang: 'भाषा',
+        aria_sections: 'अनुभाग', aria_menu: 'साइट मेनू', aria_lang: 'भाषा',
         meta_desc: 'रिएक्ट, टाइपस्क्रिप्ट, नोड.जेएस और पायथन के साथ वेब और मोबाइल एप्लिकेशन बनाने वाले फुल-स्टैक डेवलपर।',
         year_2026: '२०२६',
         year_2023: '२०२३',

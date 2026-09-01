@@ -31,6 +31,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Version static assets so browser and CDN caches refresh on deploy
+        run: |
+          sed -i \
+            -e "s|href=\"style.css\"|href=\"style.css?v=$GITHUB_SHA\"|" \
+            -e "s|src=\"i18n.js\"|src=\"i18n.js?v=$GITHUB_SHA\"|" \
+            -e "s|src=\"script.js\"|src=\"script.js?v=$GITHUB_SHA\"|" \
+            index.html
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
