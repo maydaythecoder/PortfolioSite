@@ -3,50 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="light">
     <title>Muhyadin Mohamed</title>
     <meta name="description" content="Full-stack developer building web and mobile applications with React, TypeScript, Node.js, and Python.">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23FAFAF7'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='monospace' font-size='42' font-weight='700' fill='%231F3FD8'%3EM%3C/text%3E%3C/svg%3E">
+    <script>
+        // Pre-paint: apply saved theme and language before first render
+        // so neither the colors nor the text direction flash.
+        (() => {
+            try {
+                const theme = localStorage.getItem('theme');
+                if (theme === 'dark' || theme === 'light') {
+                    document.documentElement.dataset.theme = theme;
+                }
+                const lang = localStorage.getItem('lang');
+                if (lang) {
+                    document.documentElement.lang = lang;
+                    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+                }
+            } catch {}
+        })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400..700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body id="top">
-    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
 
     <!-- Mobile / tablet masthead; the anchor column replaces it on desktop -->
     <header class="site-head">
         <div class="wrap site-head-inner">
             <a class="site-name" href="#top">Muhyadin Mohamed</a>
-            <nav class="site-nav" aria-label="Sections">
-                <a href="#about">about</a>
-                <a href="#skills">skills</a>
-                <a href="#experience">experience</a>
-                <a href="#education">education</a>
-                <a href="#projects">projects</a>
+            <nav class="site-nav" aria-label="Sections" data-i18n-aria="aria_sections">
+                <a href="#about" data-i18n="nav_about">about</a>
+                <a href="#skills" data-i18n="nav_skills">skills</a>
+                <a href="#experience" data-i18n="nav_experience">experience</a>
+                <a href="#education" data-i18n="nav_education">education</a>
+                <a href="#projects" data-i18n="nav_projects">projects</a>
             </nav>
+            <div class="top-controls">
+                <button class="theme-toggle icon-btn" type="button" data-i18n-aria="theme_dark" aria-label="dark">
+                    <svg class="icon-moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4 6.5 6.5 0 0 0 20 14.5Z"/></svg>
+                    <svg class="icon-sun" aria-hidden="true" hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+                </button>
+                <span class="lang-control">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+                    <svg class="lang-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    <select class="lang-select" aria-label="Language" data-i18n-aria="aria_lang">
+                        <option value="en">English</option>
+                        <option value="ar">العربية</option>
+                        <option value="zh">中文</option>
+                        <option value="hi">हिन्दी</option>
+                        <option value="es">Español</option>
+                        <option value="fr">Français</option>
+                    </select>
+                </span>
+            </div>
         </div>
     </header>
+
+    <!-- Desktop instance of the controls (masthead is hidden there) -->
+    <div class="top-controls top-controls--page">
+        <button class="theme-toggle icon-btn" type="button" data-i18n-aria="theme_dark" aria-label="dark">
+            <svg class="icon-moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4 6.5 6.5 0 0 0 20 14.5Z"/></svg>
+            <svg class="icon-sun" aria-hidden="true" hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+        </button>
+        <span class="lang-control">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+            <svg class="lang-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            <select class="lang-select" aria-label="Language" data-i18n-aria="aria_lang">
+                <option value="en">English</option>
+                <option value="ar">العربية</option>
+                <option value="zh">中文</option>
+                <option value="hi">हिन्दी</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+            </select>
+        </span>
+    </div>
 
     <div class="split wrap">
         <header class="anchor">
             <div class="anchor-drift">
-                <h1>Muhyadin Mohamed</h1>
-                <p class="role">Full-stack developer building web and mobile applications with React, TypeScript, Node.js, and Python.</p>
+                <h1><a href="#top">Muhyadin Mohamed</a></h1>
+                <p class="role" data-i18n="role">Full-stack developer building web and mobile applications with React, TypeScript, Node.js, and Python.</p>
 
-                <nav class="anchor-nav" aria-label="Sections">
+                <nav class="anchor-nav" aria-label="Sections" data-i18n-aria="aria_sections">
                     <span class="nav-marker" aria-hidden="true"></span>
-                    <a href="#about">about</a>
-                    <a href="#skills">skills</a>
-                    <a href="#experience">experience</a>
-                    <a href="#education">education</a>
-                    <a href="#projects">projects</a>
+                    <a href="#about" data-i18n="nav_about">about</a>
+                    <a href="#skills" data-i18n="nav_skills">skills</a>
+                    <a href="#experience" data-i18n="nav_experience">experience</a>
+                    <a href="#education" data-i18n="nav_education">education</a>
+                    <a href="#projects" data-i18n="nav_projects">projects</a>
                 </nav>
 
                 <div class="anchor-contact">
                     <a class="email mono" href="mailto:muhyadin.mohamed.003@gmail.com">muhyadin.mohamed.003@gmail.com</a>
-                    <button class="copy-email mono" type="button" data-email="muhyadin.mohamed.003@gmail.com">copy address</button>
+                    <button class="copy-email icon-btn" type="button" data-email="muhyadin.mohamed.003@gmail.com" data-i18n-aria="copy_idle" aria-label="copy address">
+                        <svg class="icon-copy" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="1.5"/><path d="M5 15V5.5A1.5 1.5 0 0 1 6.5 4H15"/></svg>
+                        <svg class="icon-check" aria-hidden="true" hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17.5 19 7"/></svg>
+                        <svg class="icon-fail" aria-hidden="true" hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M7 7l10 10M17 7 7 17"/></svg>
+                    </button>
+                    <span class="sr-only" aria-live="polite" id="copy-status"></span>
                     <p class="anchor-social mono">
                         <a href="https://github.com/maydaythecoder" target="_blank" rel="noopener">github</a>
                         <a href="https://www.linkedin.com/in/muhyadin-mohamed-567a72255/" target="_blank" rel="noopener">linkedin</a>
@@ -57,117 +116,121 @@
 
         <main id="main" class="reading">
             <section id="about" class="doc-section">
-                <h2 class="rail">about</h2>
+                <h2 class="rail" data-i18n="nav_about">about</h2>
                 <div class="prose">
-                    <p>Four years of experience designing and building scalable, high-performance web and mobile applications.</p>
-                    <p>Front end in React and React Native. Back end in Node.js, Python, and PHP. Infrastructure on AWS, Azure, and Google Cloud, with Terraform and CI/CD pipelines in GitHub Actions.</p>
+                    <p data-i18n="about_p1">Four years of experience designing and building scalable, high-performance web and mobile applications.</p>
+                    <p data-i18n="about_p2">Front end in React and React Native. Back end in Node.js, Python, and PHP. Infrastructure on AWS, Azure, and Google Cloud, with Terraform and CI/CD pipelines in GitHub Actions.</p>
                 </div>
             </section>
 
             <section id="skills" class="doc-section">
-                <h2 class="rail">skills</h2>
+                <h2 class="rail" data-i18n="nav_skills">skills</h2>
                 <div class="skill-groups">
                     <div class="skill-group">
-                        <h3>Front end</h3>
+                        <h3 data-i18n="skills_front">Front end</h3>
                         <p class="mono">React, React Native, TypeScript, JavaScript, HTML, CSS, Tailwind</p>
                     </div>
                     <div class="skill-group">
-                        <h3>Back end</h3>
+                        <h3 data-i18n="skills_back">Back end</h3>
                         <p class="mono">Node.js, Python, Django, PHP, MongoDB, MySQL</p>
                     </div>
                     <div class="skill-group">
-                        <h3>Infrastructure</h3>
+                        <h3 data-i18n="skills_infra">Infrastructure</h3>
                         <p class="mono">AWS, Azure, GCP, Terraform, GitHub Actions, Git</p>
                     </div>
                 </div>
             </section>
 
             <section id="experience" class="doc-section">
-                <h2 class="rail">experience</h2>
+                <h2 class="rail" data-i18n="nav_experience">experience</h2>
                 <div class="jobs">
+                    <span class="spine" aria-hidden="true"></span>
                     <article class="job job--current">
                         <span class="job-year mono" aria-hidden="true">2026</span>
-                        <h3>Data center engineer</h3>
-                        <p class="job-meta mono">Amazon Web Services, Columbus, January 2026</p>
+                        <h3 data-i18n="job1_title">Data center engineer</h3>
+                        <p class="job-meta mono" data-i18n="job1_meta">Amazon Web Services, Columbus, January 2026</p>
                         <ul class="job-notes">
-                            <li>Performs hands-on work with servers and data center hardware, including installation, monitoring, and maintenance to ensure system reliability and uptime.</li>
-                            <li>Troubleshoots hardware and infrastructure issues, diagnosing failures, documenting resolutions, and escalating complex issues in accordance with AWS operational procedures.</li>
+                            <li data-i18n="job1_b1">Performs hands-on work with servers and data center hardware, including installation, monitoring, and maintenance to ensure system reliability and uptime.</li>
+                            <li data-i18n="job1_b2">Troubleshoots hardware and infrastructure issues, diagnosing failures, documenting resolutions, and escalating complex issues in accordance with AWS operational procedures.</li>
                         </ul>
                     </article>
                     <article class="job">
                         <span class="job-year mono" aria-hidden="true">2023</span>
-                        <h3>Full-stack software engineer</h3>
-                        <p class="job-meta mono">Think Outside The Valley, remote, September 2023</p>
+                        <h3 data-i18n="job2_title">Full-stack software engineer</h3>
+                        <p class="job-meta mono" data-i18n="job2_meta">Think Outside The Valley, remote, September 2023</p>
                         <ul class="job-notes">
-                            <li>Developed client-side web UI and back-end account logic, aggregating complex user and prospect data from multiple sources with SQL, Excel, and Firebase while ensuring accuracy, consistency, and documentation.</li>
-                            <li>Analyzed datasets to identify trends, patterns, and business insights, producing KPI-focused performance reports and supporting ad-hoc decision-making.</li>
-                            <li>Partnered with business, product, and technical teams to translate data requirements into clear analyses and present actionable insights to stakeholders.</li>
+                            <li data-i18n="job2_b1">Developed client-side web UI and back-end account logic, aggregating complex user and prospect data from multiple sources with SQL, Excel, and Firebase while ensuring accuracy, consistency, and documentation.</li>
+                            <li data-i18n="job2_b2">Analyzed datasets to identify trends, patterns, and business insights, producing KPI-focused performance reports and supporting ad-hoc decision-making.</li>
+                            <li data-i18n="job2_b3">Partnered with business, product, and technical teams to translate data requirements into clear analyses and present actionable insights to stakeholders.</li>
                         </ul>
                     </article>
                     <article class="job">
                         <span class="job-year mono" aria-hidden="true">2022</span>
-                        <h3>Consultant, full-stack engineer</h3>
-                        <p class="job-meta mono">Cube Seed, Columbus, July 2022</p>
+                        <h3 data-i18n="job3_title">Consultant, full-stack engineer</h3>
+                        <p class="job-meta mono" data-i18n="job3_meta">Cube Seed, Columbus, July 2022</p>
                         <ul class="job-notes">
-                            <li>Designed and deployed a scalable microservices architecture with Node.js and AWS, reducing application latency by 35%.</li>
+                            <li data-i18n="job3_b1">Designed and deployed a scalable microservices architecture with Node.js and AWS, reducing application latency by 35%.</li>
                         </ul>
                     </article>
                 </div>
             </section>
 
             <section id="education" class="doc-section">
-                <h2 class="rail">education</h2>
-                <div>
-                    <article class="edu">
-                        <h3>Meta Elevate, full-stack development</h3>
-                        <p class="job-meta mono">Coursera, December 2022 to February 2024</p>
-                        <p class="job-summary">Back-end development, API design, CI/CD, database management, and Agile practice.</p>
+                <h2 class="rail" data-i18n="nav_education">education</h2>
+                <div class="jobs">
+                    <span class="spine" aria-hidden="true"></span>
+                    <article class="job">
+                        <span class="job-year mono" aria-hidden="true">2022</span>
+                        <h3 data-i18n="edu1_title">Meta Elevate, full-stack development</h3>
+                        <p class="job-meta mono" data-i18n="edu1_meta">Coursera, December 2022</p>
+                        <p class="job-summary" data-i18n="edu1_summary">Back-end development, API design, CI/CD, database management, and Agile practice.</p>
                     </article>
-                    <article class="edu">
-                        <h3>Certifications</h3>
+                    <article class="job">
+                        <h3 data-i18n="certs_title">Certifications</h3>
                         <ul class="cert-list mono">
-                            <li><span class="cert-org">Meta</span> React, JavaScript, Python, front-end and back-end development</li>
-                            <li><span class="cert-org">Google</span> Cybersecurity, AI and machine learning</li>
-                            <li><span class="cert-org">LinkedIn</span> AWS</li>
+                            <li><span class="cert-org">Meta</span> <span data-i18n="cert_meta">React, JavaScript, Python, front-end and back-end development</span></li>
+                            <li><span class="cert-org">Google</span> <span data-i18n="cert_google">Cybersecurity, AI and machine learning</span></li>
+                            <li><span class="cert-org">LinkedIn</span> <span data-i18n="cert_linkedin">AWS</span></li>
                         </ul>
                     </article>
                 </div>
             </section>
 
             <section id="projects" class="doc-section rule-above">
-                <h2 class="rail">projects</h2>
+                <h2 class="rail" data-i18n="nav_projects">projects</h2>
                 <div class="project-index">
                     <a class="project" href="https://github.com/maydaythecoder/cortex" target="_blank" rel="noopener">
                         <span class="project-head">
                             <span class="project-name">Cortex</span>
                             <span class="project-tech mono">Rust, LLVM</span>
                         </span>
-                        <span class="project-desc">A compiled programming language engineered from the ground up for machine learning and AI, combining the execution speed of Rust with high readability: AI-first primitives, robust tooling, and syntax optimized for high-performance training loops.</span>
+                        <span class="project-desc" data-i18n="p1_desc">A compiled programming language engineered from the ground up for machine learning and AI, combining the execution speed of Rust with high readability: AI-first primitives, robust tooling, and syntax optimized for high-performance training loops.</span>
                     </a>
                     <a class="project" href="https://github.com/maydaythecoder/diag" target="_blank" rel="noopener">
                         <span class="project-head">
                             <span class="project-name">Diag</span>
                             <span class="project-tech mono">Go</span>
                         </span>
-                        <span class="project-desc">A terminal UI for real-time system health monitoring: a custom scoring engine turns CPU, memory, GPU, storage, and battery metrics into per-component health scores, with automated maintenance for disk checks, file repairs, and cache clearing.</span>
+                        <span class="project-desc" data-i18n="p2_desc">A terminal UI for real-time system health monitoring: a custom scoring engine turns CPU, memory, GPU, storage, and battery metrics into per-component health scores, with automated maintenance for disk checks, file repairs, and cache clearing.</span>
                     </a>
                     <a class="project" href="https://github.com/maydaythecoder/cleanup" target="_blank" rel="noopener">
                         <span class="project-head">
                             <span class="project-name">cleanup</span>
                             <span class="project-tech mono">Shell</span>
                         </span>
-                        <span class="project-desc">A console script that finds and clears caches on macOS.</span>
+                        <span class="project-desc" data-i18n="p3_desc">A console script that finds and clears caches on macOS.</span>
                     </a>
                 </div>
             </section>
 
             <p class="colophon mono">
                 <a href="mailto:muhyadin.mohamed.003@gmail.com">muhyadin.mohamed.003@gmail.com</a>
-                <a href="#top">back to top</a>
+                <a href="#top" data-i18n="back_top">back to top</a>
             </p>
         </main>
     </div>
 
+    <script src="i18n.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

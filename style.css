@@ -2,6 +2,8 @@
    Muhyadin Mohamed — portfolio
    Ink-on-paper document system. One accent. No framework.
    Two columns: a sticky identity anchor and a reading column.
+   Dark theme is the same system inverted: paper on ink.
+   Logical properties throughout so Arabic (RTL) mirrors cleanly.
    --------------------------------------------------------------- */
 
 :root {
@@ -15,10 +17,15 @@
     --font-sans: "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
     --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
 
+    /* Easing tokens: settle arrives like a pen; spring lands with a
+       slight physical overshoot */
+    --ease-settle: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
     /* Fluid type: 360px -> 1920px with no visible snapping */
     --text-body: clamp(1rem, 0.96rem + 0.18vw, 1.0625rem);
     --text-mono: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
-    --text-h1: clamp(1.75rem, 1.55rem + 0.9vw, 2.125rem);
+    --text-h1: clamp(1.6875rem, 1.55rem + 0.7vw, 2rem);
     --text-lede: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
     --text-h3: clamp(1.0625rem, 1.03rem + 0.14vw, 1.1875rem);
     --text-h3-major: clamp(1.1875rem, 1.14rem + 0.22vw, 1.3125rem);
@@ -26,6 +33,30 @@
     /* Fluid rhythm */
     --space-section: clamp(4rem, 2.75rem + 5vw, 7rem);
     --head-h: 3.5rem;
+
+    color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+    --paper: #131513;
+    --ink: #E8E8E3;
+    --graphite: #9A9D9A;
+    --rule: #2E302E;
+    --blueprint: #7C96FF;
+    --blueprint-soft: rgba(124, 150, 255, 0.35);
+    color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --paper: #131513;
+        --ink: #E8E8E3;
+        --graphite: #9A9D9A;
+        --rule: #2E302E;
+        --blueprint: #7C96FF;
+        --blueprint-soft: rgba(124, 150, 255, 0.35);
+        color-scheme: dark;
+    }
 }
 
 *,
@@ -91,6 +122,11 @@ a {
     font-size: var(--text-mono);
 }
 
+/* Arabic joins letterforms; never track it */
+html[lang="ar"] .anchor h1 {
+    letter-spacing: 0;
+}
+
 .wrap {
     width: min(70rem, 100% - clamp(2.5rem, 9vw, 6rem));
     margin-inline: auto;
@@ -105,8 +141,8 @@ a {
 .skip-link {
     position: absolute;
     top: 0.5rem;
-    left: 0.5rem;
-    z-index: 10;
+    inset-inline-start: 0.5rem;
+    z-index: 30;
     padding: 0.75rem 1rem;
     background: var(--paper);
     border: 1px solid var(--ink);
@@ -117,6 +153,118 @@ a {
 
 .skip-link:focus {
     transform: none;
+}
+
+/* --- Theme + language controls --------------------------------- */
+
+.top-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Desktop instance: top corner of the page (no masthead there) */
+.top-controls--page {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .top-controls--page {
+        display: flex;
+        position: absolute;
+        top: 0.75rem;
+        inset-inline-end: clamp(1.25rem, 4.5vw, 3rem);
+        z-index: 20;
+    }
+
+    /* The masthead instance disappears with the masthead */
+    .site-head .top-controls {
+        display: none;
+    }
+}
+
+/* Inline SVGs don't reliably honor [hidden] in every engine */
+svg[hidden] {
+    display: none !important;
+}
+
+/* Bare icon buttons: quiet chrome, full 44px hit areas */
+.icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    background: none;
+    border: 0;
+    border-radius: 50%;
+    color: var(--graphite);
+    cursor: pointer;
+    transition: color 150ms ease;
+}
+
+.icon-btn:hover {
+    color: var(--ink);
+}
+
+.icon-btn svg {
+    width: 1.125rem;
+    height: 1.125rem;
+}
+
+/* Globe + arrow trigger; the real (invisible) select sits on top so
+   clicks and keyboard focus open the native dropdown */
+.lang-control {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.125rem;
+    min-height: 2.75rem;
+    padding-inline: 0.375rem;
+    color: var(--graphite);
+    transition: color 150ms ease;
+}
+
+.lang-control:hover {
+    color: var(--ink);
+}
+
+.lang-control svg {
+    width: 1.125rem;
+    height: 1.125rem;
+}
+
+.lang-control .lang-arrow {
+    width: 0.75rem;
+    height: 0.75rem;
+}
+
+.lang-select {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    border: 0;
+    cursor: pointer;
+}
+
+.lang-control:focus-within {
+    outline: 2px solid var(--blueprint);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
 }
 
 /* --- Masthead (mobile and tablet only) ------------------------- */
@@ -131,7 +279,7 @@ a {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    column-gap: 1.5rem;
+    column-gap: 1rem;
     padding-block: 0.375rem;
 }
 
@@ -193,13 +341,22 @@ a {
     padding-top: clamp(3rem, 2rem + 4vw, 5rem);
 }
 
-/* Anchor column: identity, wayfinding, action */
-
 .anchor h1 {
     font-size: var(--text-h1);
     font-weight: 650;
     letter-spacing: -0.015em;
     line-height: 1.1;
+}
+
+/* The name is the way home */
+.anchor h1 a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 150ms ease;
+}
+
+.anchor h1 a:hover {
+    color: var(--blueprint);
 }
 
 .role {
@@ -235,29 +392,8 @@ a {
     color: var(--blueprint);
 }
 
-/* The featured interaction: copying flips the button's state */
-.copy-email {
-    min-width: 10em;
-    padding: 0.6875rem 1rem;
-    background: transparent;
-    border: 1px solid var(--ink);
-    border-radius: 2px;
-    color: var(--ink);
-    font-family: var(--font-mono);
-    font-size: var(--text-mono);
-    cursor: pointer;
-    transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
-}
-
-.copy-email:hover {
-    background: var(--ink);
-    color: var(--paper);
-}
-
-.copy-email.is-copied,
-.copy-email.is-copied:hover {
-    background: transparent;
-    border-color: var(--blueprint);
+/* The featured interaction: copying flips the icon's state */
+.copy-email.is-copied {
     color: var(--blueprint);
     animation: bloom 300ms ease-out;
 }
@@ -310,7 +446,8 @@ a {
     }
 
     .anchor-nav a {
-        padding: 0.5625rem 0 0.5625rem 1.875rem;
+        padding-block: 0.5625rem;
+        padding-inline: 1.875rem 0;
         font-family: var(--font-mono);
         font-size: var(--text-mono);
         color: var(--graphite);
@@ -326,13 +463,13 @@ a {
     /* The signature moment: this rule glides between section labels */
     .nav-marker {
         position: absolute;
-        left: 0;
+        inset-inline-start: 0;
         top: 0;
         width: 1rem;
         height: 2px;
         background: var(--blueprint);
         opacity: 0;
-        transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), opacity 200ms ease;
+        transition: transform 300ms var(--ease-spring), opacity 200ms ease;
     }
 
     .nav-marker.ready {
@@ -367,7 +504,7 @@ a {
 /* Functional bloom: a brief luminous pulse on state changes only */
 @keyframes bloom {
     0% { box-shadow: 0 0 0 0 var(--blueprint-soft); }
-    100% { box-shadow: 0 0 0 0.5rem rgba(31, 63, 216, 0); }
+    100% { box-shadow: 0 0 0 0.5rem transparent; }
 }
 
 /* Parallax drift: the anchor eases down slightly over the whole
@@ -394,6 +531,15 @@ a {
     padding-bottom: 2rem;
 }
 
+/* Head- and tailroom so the first and last sections can reach the
+   center of the viewport when selected from the nav */
+@media (min-width: 1024px) {
+    .reading {
+        padding-top: 24vh;
+        padding-bottom: 22vh;
+    }
+}
+
 .doc-section {
     padding-block: 2rem var(--space-section);
 }
@@ -404,6 +550,12 @@ a {
     font-weight: 400;
     color: var(--graphite);
     margin-bottom: 1.75rem;
+    transition: color 150ms ease;
+}
+
+/* The section under the reading line carries its title in the accent */
+.doc-section.is-current .rail {
+    color: var(--blueprint);
 }
 
 .prose {
@@ -439,22 +591,39 @@ a {
     line-height: 1.8;
 }
 
-/* --- Experience: timeline spine -------------------------------- */
+/* --- Timeline sections (experience, education) ----------------- */
 
 .jobs {
     position: relative;
-    padding-left: 1.5rem;
+    padding-inline-start: 1.5rem;
 }
 
-/* The chronological spine — genuinely sequential, so it's earned */
-.jobs::before {
-    content: "";
+/* The chronological spine — genuinely sequential, so it's earned.
+   A real element (not a pseudo) so the scroll-driven draw attaches
+   reliably; it draws itself downward as the reader progresses. */
+.spine {
     position: absolute;
-    left: 0;
+    inset-inline-start: 0;
     top: 0.5rem;
     bottom: 0.5rem;
     width: 1px;
     background: var(--rule);
+}
+
+@supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+        .spine {
+            transform-origin: top;
+            animation: spine-draw linear both;
+            animation-timeline: view();
+            animation-range: entry 20% cover 65%;
+        }
+    }
+}
+
+@keyframes spine-draw {
+    from { transform: scaleY(0); }
+    to { transform: scaleY(1); }
 }
 
 .job {
@@ -469,11 +638,12 @@ a {
 .job::before {
     content: "";
     position: absolute;
-    left: -1.5rem;
+    inset-inline-start: -1.5rem;
     top: 0.75em;
     width: 0.875rem;
     height: 1px;
     background: var(--ink);
+    transition: background 150ms ease;
 }
 
 .job-year {
@@ -482,24 +652,24 @@ a {
 
 @media (min-width: 768px) {
     .jobs {
-        padding-left: 6rem;
+        padding-inline-start: 6rem;
     }
 
-    .jobs::before {
-        left: 4rem;
+    .jobs .spine {
+        inset-inline-start: 4rem;
     }
 
     .job::before {
-        left: -2rem;
+        inset-inline-start: -2rem;
     }
 
     .job-year {
         display: block;
         position: absolute;
-        left: -6rem;
+        inset-inline-start: -6rem;
         top: 0.25em;
         width: 3.25rem;
-        text-align: right;
+        text-align: end;
         color: var(--graphite);
     }
 }
@@ -508,6 +678,7 @@ a {
     font-size: var(--text-h3);
     font-weight: 600;
     line-height: 1.35;
+    transition: color 150ms ease;
 }
 
 /* The current role carries more visual weight than older ones */
@@ -516,13 +687,25 @@ a {
 }
 
 .job--current::before {
-    background: var(--blueprint);
     height: 2px;
 }
 
 .job--current .job-year {
     color: var(--ink);
     font-weight: 500;
+}
+
+/* The entry passing the reading line highlights as the reader sweeps by */
+.job.job-active h3 {
+    color: var(--blueprint);
+}
+
+.job.job-active::before {
+    background: var(--blueprint);
+}
+
+.job.job-active .job-year {
+    color: var(--ink);
 }
 
 .job-meta {
@@ -542,7 +725,7 @@ a {
 
 .job-notes li {
     position: relative;
-    padding-left: 1.5rem;
+    padding-inline-start: 1.5rem;
     margin-top: 0.5rem;
 }
 
@@ -550,7 +733,7 @@ a {
 .job-notes li::before {
     content: "";
     position: absolute;
-    left: 0;
+    inset-inline-start: 0;
     top: 0.75em;
     width: 0.75rem;
     height: 1px;
@@ -558,16 +741,6 @@ a {
 }
 
 /* --- Education ------------------------------------------------- */
-
-.edu + .edu {
-    margin-top: 3rem;
-}
-
-.edu h3 {
-    font-size: var(--text-h3);
-    font-weight: 600;
-    line-height: 1.35;
-}
 
 .cert-list {
     margin-top: 1rem;
