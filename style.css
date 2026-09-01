@@ -376,12 +376,11 @@ svg[hidden] {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    column-gap: 1.25rem;
+    column-gap: 0.25rem;
     row-gap: 0.5rem;
 }
 
 .email {
-    font-size: clamp(0.9375rem, 0.9rem + 0.2vw, 1rem);
     padding-block: 0.625rem;
     text-underline-offset: 0.35em;
     text-decoration-thickness: 1px;
